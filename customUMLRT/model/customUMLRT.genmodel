@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/customUMLRT/src-gen" creationIcons="false" editDirectory="/customUMLRT.edit/src-gen"
+    editorDirectory="/customUMLRT.editor/src-gen" modelPluginID="customUMLRT" modelName="CustomUMLRT"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>customUMLRT.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="CustomUMLRT" disposableProviderFactory="true" ecorePackage="customUMLRT.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="customUMLRT.ecore#//SignalType">
+      <genEnumLiterals ecoreEnumLiteral="customUMLRT.ecore#//SignalType/IN"/>
+      <genEnumLiterals ecoreEnumLiteral="customUMLRT.ecore#//SignalType/OUT"/>
+      <genEnumLiterals ecoreEnumLiteral="customUMLRT.ecore#//SignalType/INOUT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="customUMLRT.ecore#//PortKind">
+      <genEnumLiterals ecoreEnumLiteral="customUMLRT.ecore#//PortKind/EXTERNAL"/>
+      <genEnumLiterals ecoreEnumLiteral="customUMLRT.ecore#//PortKind/INTERNAL"/>
+      <genEnumLiterals ecoreEnumLiteral="customUMLRT.ecore#//PortKind/RELAY"/>
+      <genEnumLiterals ecoreEnumLiteral="customUMLRT.ecore#//PortKind/TIMING"/>
+    </genEnums>
+    <genClasses ecoreClass="customUMLRT.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Model/capsules"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//Model/name"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//Signal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//Signal/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//Signal/type"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//Capsule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//Capsule/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Capsule/ports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Capsule/subcapsules"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Capsule/connectors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Capsule/protocols"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Capsule/statemachine"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//Port/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//Port/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//Port/conjugated"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Port/protocol"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//StateMachine">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//StateMachine/states"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//StateMachine/defaultStates"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//State">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//State/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//State/transitions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//State/stateEntryEvent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//State/stateExitEvent"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//Transition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Transition/transitionEvent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Transition/triggers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Transition/tar"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Transition/src"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//Event">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//Event/wcet"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Event/sendSignals"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//StateEntryEvent"/>
+    <genClasses ecoreClass="customUMLRT.ecore#//TransitionEvent"/>
+    <genClasses ecoreClass="customUMLRT.ecore#//StateExitEvent"/>
+    <genClasses ecoreClass="customUMLRT.ecore#//Subcapsule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Subcapsule/ports"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//Subcapsule/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Subcapsule/wcetlookup"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//TempMachine"/>
+    <genClasses ecoreClass="customUMLRT.ecore#//Protocol">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Protocol/signals"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//Protocol/name"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//Connector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Connector/port"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//DefaultState">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//DefaultState/transitions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//DefaultState/name"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//Trigger">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Trigger/port"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//Trigger/signal"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//InitialTransition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//InitialTransition/transitionEvent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//InitialTransition/triggers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//InitialTransition/target"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//sendSignal">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//sendSignal/signal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//sendSignal/port"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//WData">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//WData/lookupsignal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//WData/vopair"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//WcetLookup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//WcetLookup/portset"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//portSet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//portSet/setName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//portSet/wdata"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//LookupSignal">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//LookupSignal/port"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//LookupSignal/signal"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//voPair">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute customUMLRT.ecore#//voPair/executionTime"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//voPair/outSignals"/>
+    </genClasses>
+    <genClasses ecoreClass="customUMLRT.ecore#//outSignal">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//outSignal/signal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference customUMLRT.ecore#//outSignal/port"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

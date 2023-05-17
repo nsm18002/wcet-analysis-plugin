@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="customUMLRT" nsURI="http://www.example.org/customUMLRT" nsPrefix="customUMLRT">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capsules" lowerBound="1"
+        eType="#//Capsule" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Signal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SignalType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Capsule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
+        eType="#//Port" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subcapsules" upperBound="-1"
+        eType="#//Subcapsule" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"
+        eType="#//Connector" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="protocols" upperBound="-1"
+        eType="#//Protocol" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statemachine" eType="#//StateMachine"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SignalType">
+    <eLiterals name="IN"/>
+    <eLiterals name="OUT" value="1"/>
+    <eLiterals name="INOUT" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//PortKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="conjugated" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="protocol" eType="#//Protocol"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PortKind">
+    <eLiterals name="EXTERNAL"/>
+    <eLiterals name="INTERNAL" value="1"/>
+    <eLiterals name="RELAY" value="2"/>
+    <eLiterals name="TIMING" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateMachine">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//State" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultStates" lowerBound="1"
+        eType="#//DefaultState" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
+        eType="#//Transition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stateEntryEvent" eType="#//StateEntryEvent"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stateExitEvent" eType="#//StateExitEvent"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitionEvent" eType="#//TransitionEvent"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
+        eType="#//Trigger" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tar" lowerBound="1" eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="src" lowerBound="1" eType="#//State"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wcet" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sendSignals" upperBound="-1"
+        eType="#//sendSignal" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateEntryEvent" eSuperTypes="#//Event"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TransitionEvent" eSuperTypes="#//Event"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StateExitEvent" eSuperTypes="#//Event"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Subcapsule">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
+        eType="#//Port" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wcetlookup" eType="#//WcetLookup"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TempMachine"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Protocol">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signals" upperBound="-1"
+        eType="#//Signal" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Connector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" lowerBound="2" upperBound="2"
+        eType="#//Port"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DefaultState">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" lowerBound="1"
+        eType="#//InitialTransition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Trigger">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" lowerBound="1" eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" lowerBound="1"
+        eType="#//Signal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialTransition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitionEvent" eType="#//TransitionEvent"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
+        eType="#//Trigger" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//State"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="sendSignal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" lowerBound="1"
+        eType="#//Signal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" lowerBound="1" eType="#//Port"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WData">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lookupsignal" lowerBound="1"
+        eType="#//LookupSignal" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vopair" upperBound="-1"
+        eType="#//voPair" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WcetLookup">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portset" lowerBound="3"
+        upperBound="3" eType="#//portSet" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="portSet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="setName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wdata" upperBound="-1"
+        eType="#//WData" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LookupSignal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" lowerBound="1" eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" lowerBound="1"
+        eType="#//Signal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="voPair">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executionTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outSignals" upperBound="-1"
+        eType="#//outSignal" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="outSignal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" lowerBound="1"
+        eType="#//Signal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" lowerBound="1" eType="#//Port"/>
+  </eClassifiers>
+</ecore:EPackage>
