@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customUMLRT:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:customUMLRT="http://www.example.org/customUMLRT">
+  <capsules name="TopCap">
+    <ports name="p1" kind="RELAY" protocol="//@capsules/@protocols.0"/>
+    <ports name="p4" kind="INTERNAL" protocol="//@capsules/@protocols.1"/>
+    <ports name="p5" protocol="//@capsules/@protocols.2"/>
+    <subcapsules name="subcap1">
+      <wcetlookup>
+        <wcetEntries wcet="100">
+          <outSignals signal="//@capsules/@protocols.1/@signals.0" port="//@capsules/@subcapsules.0/@ports.1"/>
+          <inSignal signal="//@capsules/@protocols.0/@signals.0" port="//@capsules/@subcapsules.0/@ports.0"/>
+        </wcetEntries>
+      </wcetlookup>
+      <ports name="p2" kind="RELAY" protocol="//@capsules/@protocols.0"/>
+      <ports name="p3" kind="RELAY" conjugated="true" protocol="//@capsules/@protocols.1"/>
+    </subcapsules>
+    <tempmachine>
+      <wcetlookup>
+        <wcetEntries wcet="50">
+          <outSignals signal="//@capsules/@protocols.2/@signals.0" port="//@capsules/@ports.2"/>
+          <inSignal signal="//@capsules/@protocols.1/@signals.0" port="//@capsules/@ports.1"/>
+        </wcetEntries>
+      </wcetlookup>
+    </tempmachine>
+    <connectors port="//@capsules/@ports.0 //@capsules/@subcapsules.0/@ports.0"/>
+    <connectors port="//@capsules/@subcapsules.0/@ports.1 //@capsules/@ports.1"/>
+    <protocols name="p1p2">
+      <signals name="s1"/>
+    </protocols>
+    <protocols name="p3p4">
+      <signals name="s2"/>
+    </protocols>
+    <protocols name="p5out">
+      <signals name="s3" type="OUT"/>
+    </protocols>
+  </capsules>
+</customUMLRT:Model>
