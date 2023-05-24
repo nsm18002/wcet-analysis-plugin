@@ -14,7 +14,8 @@ public class TestingTimeout{
 		AlgPort p2 = new AlgPort("p2", PortKind.RELAY, true);
 		AlgPort p3 = new AlgPort("p3", PortKind.RELAY, true);
 		AlgPort p4 = new AlgPort("p4", PortKind.RELAY, false);
-		AlgPort p5 = new AlgPort("p5", PortKind.EXTERNAL, false);
+		AlgPort p5 = new AlgPort("p5", PortKind.RELAY, true);
+		AlgPort p6 = new AlgPort("p6", PortKind.RELAY, false);
 		AlgPort timing = new AlgPort("timing", PortKind.TIMING, false);
 		
 		AlgSignal s1src = new AlgSignal("s1", SignalType.OUT, p1, p2, p1);
@@ -32,12 +33,18 @@ public class TestingTimeout{
 		p3.AddSignal(s3src); 
 		p4.AddSignal(s3tar);
 		
-		AlgSignal s4src = new AlgSignal("s4", SignalType.OUT, p5, null, p5);
+		AlgSignal s4src = new AlgSignal("s4", SignalType.OUT, p5, p6, p5);
+		AlgSignal s4tar = new AlgSignal("s4", SignalType.OUT, p6, null, p6);
 		p5.AddSignal(s4src);
-		AlgSignal s5src = new AlgSignal("s5", SignalType.OUT, p5, null, p5);
+		p6.AddSignal(s4tar);
+		AlgSignal s5src = new AlgSignal("s5", SignalType.OUT, p5, p6, p5);
+		AlgSignal s5tar = new AlgSignal("s5", SignalType.OUT, p6, null, p6);
 		p5.AddSignal(s5src);
-		AlgSignal s6src = new AlgSignal("s6", SignalType.OUT, p5, null, p5);
+		p6.AddSignal(s5tar);
+		AlgSignal s6src = new AlgSignal("s6", SignalType.OUT, p5, p6, p5);
+		AlgSignal s6tar = new AlgSignal("s6", SignalType.OUT, p6, null, p6);
 		p5.AddSignal(s6src);
+		p6.AddSignal(s6tar);
 		
 		AlgSignal timeout = new AlgSignal("timeout", SignalType.IN, timing, timing, timing);
 		timing.AddSignal(timeout);
@@ -48,6 +55,7 @@ public class TestingTimeout{
 		c.ports.add(p3);
 		c.ports.add(p4);
 		c.ports.add(p5);
+		c.ports.add(p6);
 		c.ports.add(timing);
 		
 		//Subcapsule
@@ -66,6 +74,7 @@ public class TestingTimeout{
 		
 		sc.ports.add(p2);
 		sc.ports.add(p3);
+		sc.ports.add(p5);
 		
 		c.subcapsules.add(sc);
 			
