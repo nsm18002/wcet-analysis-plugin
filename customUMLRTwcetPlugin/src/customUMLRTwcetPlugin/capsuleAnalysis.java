@@ -322,7 +322,7 @@ public class capsuleAnalysis {
 				mixers.AddVoPair(newPair);
 				
 				for(AlgSignal psp : Wpvo.signals) {
-					History HCp = new History();
+					History HCp = HC.getCopy();
 					AlgWData mixer = traverse(c, psp, HCp);
 					
 					AlgWData newMixers = new AlgWData();
